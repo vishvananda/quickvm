@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+VM=${1:-$(basename $(pwd))}
+VBoxManage controlvm $VM poweroff
+sleep 1
+VBoxManage snapshot $VM restore bak
+sleep 1
+VBoxManage snapshot $VM delete bak
+sleep 1
+startvm $VM

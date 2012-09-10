@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+VM=${1:-$(basename $(pwd))}
+ssh-add
+ssh $VM

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+VM=${1:-$(basename $(pwd))}
+VBoxManage showvminfo $VM 2>/dev/null | grep State | awk '{print $2}'

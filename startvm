@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 VM=${1:-$(basename $(pwd))}
-VBoxManage startvm $VM --type headless
+vmrun start "$HOME/Documents/Virtual Machines.localized/$VM.vmwarevm" nogui

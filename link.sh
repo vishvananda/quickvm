@@ -10,3 +10,7 @@ for i in `ls $src/*vm`; do
   fi
   ln -s $src/$i $dst/$i
 done
+
+if [ -e /Applications/VMware\ Fusion.app/Contents/Library/vmrun && ! -e $dst/$i ]; then
+  ln -s /Applications/VMware\ Fusion.app/Contents/Library/vmrun $dst/vmrun
+fi

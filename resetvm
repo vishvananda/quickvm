@@ -5,14 +5,6 @@ if ! VBoxManage list vms | grep $VM; then
     STATE=$VM
     VM=$(basename $(pwd))
 fi
-VBoxManage controlvm $VM pause
-sleep 1
-VBoxManage snapshot $VM delete bak
-sleep 1
-VBoxManage snapshot $VM take bak
-sleep 1
-VBoxManage controlvm $VM poweroff
-sleep 1
-VBoxManage snapshot $VM restore $STATE
-sleep 1
-startvm $VM
+vmrun deleteSnapshot "$HOME/Documents/Virtual Machines.localized/$VM.vmwarevm" bak
+vmrun snapshot "$HOME/Documents/Virtual Machines.localized/$VM.vmwarevm" bak
+vmrun revertToSnapshot "$HOME/Documents/Virtual Machines.localized/$VM.vmwarevm" $STATE

@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 VM=${1:-$(basename $(pwd))}
-VBoxManage showvminfo $VM 2>/dev/null | grep State | awk '{print $2}'
+if [ ! -e "$HOME/Documents/Virtual Machines.localized/$VM.vmwarevm" ]; then
+    exit 1
+fi
+
+if vmrun list | grep -q $VM.vmwarevm; then
+  echo "running"
+else
+  echo "stopped"
+fi
